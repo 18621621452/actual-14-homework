@@ -13,7 +13,6 @@ print "length=%s" %length
 #         print arr
 # print arr
 
-
 for i in range(1,length):
     print "-"*50
     tmp = arr[i]
@@ -23,6 +22,7 @@ for i in range(1,length):
             arr[j+1] = arr[j]
             arr[j] = tmp
             print "%s后移到第%s位,%s放到第%s位" %(arr[j+1],j+1,arr[j],j)
+	    print arr
         else:
             break
     print arr
