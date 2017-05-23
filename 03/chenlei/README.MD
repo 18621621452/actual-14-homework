@@ -1,0 +1,12 @@
+(1) ip:117.63.146.40||url:http://www.adreambox.net/index.php?app=home&mod=User&act=index||status:200||count:1030
+(2) ip:10.35.1.82||url:-||status:200||count:518
+(3) ip:218.29.111.117||url:http://www.adreambox.net/index.php?app=adreambox&mod=Class&act=prensent&id=5&type=2||status:200||count:481
+(4) ip:111.85.34.165||url:http://www.adreambox.net/index.php?app=adreambox&mod=Class&act=prensent&id=5&type=2||status:200||count:481
+(5) ip:42.92.201.201||url:http://www.adreambox.net/index.php?app=home&mod=User&act=index||status:304||count:469
+(6) ip:60.222.231.46||url:http://www.adreambox.net/index.php?app=home&mod=User&act=index||status:200||count:404
+(7) ip:183.30.200.178||url:http://www.adreambox.net/index.php?app=group&mod=Group&act=index&follow_gid=all&gid=92&weibo_type=1||status:200||count:254
+(8) ip:182.113.219.110||url:http://www.adreambox.net/index.php?act=index&app=home&mod=User||status:200||count:245
+(9) ip:111.85.34.165||url:http://www.adreambox.net/index.php?app=home&mod=User&act=index||status:304||count:245
+(10) ip:219.141.99.47||url:http://www.adreambox.net/index.php?app=home&mod=User&act=index||status:304||count:242
+(11) ip:58.253.6.133||url:http://www.adreambox.net/index.php?app=home&mod=User&act=index||status:200||count:232
+(12) ip:42.92.213.110||url:http://www.adreambox.net/index.php?app=home&mod=User&act=index||status:200||count:227
