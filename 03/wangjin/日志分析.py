@@ -2,7 +2,7 @@
 #coding:utf8
 
 
-with open('access.log') as f:
+with open('access.mad') as f:
     content = f.readlines()
     f.close()
 
