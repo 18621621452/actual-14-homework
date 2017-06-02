@@ -10,8 +10,8 @@ for l in f:
 #print my_dict.items()
 my_list = my_dict.items()
 length = len(my_list)
-for i in range(20):
-    for j in range(length-1):
+for i in range(length-1):
+    for j in range(length-1-i):
         if  my_list[j][1] > my_list[j+1][1]:
             my_list[j],my_list[j+1] = my_list[j+1],my_list[j]
 for key,val in my_list[:-11:-1]:
