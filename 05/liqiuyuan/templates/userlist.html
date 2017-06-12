@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>userinfo</title>
+</head>
+<body>
+
+
+{% if user=='admin' %}
+    <tr>
+    <td> <a href="/logout">logout</a></td>
+    <td><a href="/adduser">add user</a></td>
+    <td> <a href="/deluser">del user</a></td>
+    </tr>
+{% else %}
+<a href="/logout">logout</a>
+{% endif %}
+
+<table border="1">
+
+    {% for user in userlist %}
+    <tr>
+        <td>{{user[0]}}</td>
+        <td>{{user[1]}}</td>
+    </tr>
+
+    {% endfor %}
+</table>
+
+</body>
+</html>
