@@ -1,0 +1,15 @@
+{% if user == 'admin'  %} 
+  <a href='/adduser'>adduser</a>
+  <a href='/deluser'>deluser</a>
+  <a href='/logout'>logout</a>
+{% else %}
+  <a href='/logout'>logout</a> 
+{% endif %}
+<table border='1'>
+{% for user in userlist %}
+    <tr>
+      <td>{{ user[0] }}</td>
+      <td>{{ user[1] }}</td>      		
+    </tr>
+{% endfor %}
+</table>
