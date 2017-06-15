@@ -1,0 +1,28 @@
+{% if user and user == 'admin' %}
+<h1>welcome {{ user }}</h1>
+<a href="/logout" >logout</a>
+<a href="/adduser">add_user</a>
+<a href="/deluser">del_user</a>
+<table border="1">
+    {% for user in userinfo %}
+    <tr>
+        <td>{{user[0]}}</td>
+        <td>{{user[1]}}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% elif user and user != 'admin' %}
+<h1>welcome {{ user }}</h1>
+<a href="/logout" >logout</a>
+<table border="1">
+    {% for user in userinfo %}
+    <tr>
+        <td>{{user[0]}}</td>
+        <td>{{user[1]}}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<h1>you need login</h1>
+<a href="/login">login</a>
+{% endif %}
