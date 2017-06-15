@@ -73,7 +73,7 @@ def deluser():
         lines = f.readlines()
     with open('user_pwd.txt', 'w') as f_w:
         for line in lines:
-            if user and user == 'admin' and user in line:
+            if user  and user in line:
                 continue
             f_w.write(line)
     return redirect('/userlist')
