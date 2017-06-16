@@ -18,16 +18,16 @@ def file_read():
             count_dict[file_tuple] = count_dict.get(file_tuple,0) + 1
     return count_dict.items()
 
-def ten_index(length,sort_list):
-    for i in range(length):
-        if i >=10:
-            if sort_list[-i-1][1] != sort_list[-i][1]:
-                index = i
-                break
-    return index
+# def ten_index(length,sort_list):
+#     for i in range(length):
+#         if i >=10:
+#             if sort_list[-i-1][1] != sort_list[-i][1]:
+#                 index = i
+#                 break
+#     return index
 
 all_list = file_read()
-sort_list = sorted(all_list,key=lambda x:x[1])
-length = len(sort_list)
-index = ten_index(length,sort_list)
-html_write(sort_list[:-index - 1:-1])
+sort_list = sorted(all_list,key=lambda x:x[1],reverse=True)[:10]
+# index = ten_index(length,sort_list)
+# html_write(sort_list[:-index - 1:-1])
+html_write(sort_list)
