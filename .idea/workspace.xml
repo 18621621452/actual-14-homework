@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="3ef586e0-b23e-4973-97b4-9a269ffe9da5" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/05/chenlei/flask_web.py" afterPath="$PROJECT_DIR$/05/chenlei/flask_web.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/05/chenlei/user_pwd.txt" afterPath="$PROJECT_DIR$/05/chenlei/user_pwd.txt" />
     </list>
     <ignored path="actual-14-homework.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -19,7 +18,7 @@
     <SUITE FILE_PATH="coverage/actual-14-homework$homework_day4.coverage" NAME="homework_day4 Coverage Results" MODIFIED="1497060529991" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/04/chenlei" />
     <SUITE FILE_PATH="coverage/actual-14-homework$flask.coverage" NAME="flask Coverage Results" MODIFIED="1497262615004" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../../python/redis_memory" />
     <SUITE FILE_PATH="coverage/actual-14-homework$flask_web__1_.coverage" NAME="flask_web (1) Coverage Results" MODIFIED="1497262710824" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../../python/redis_memory" />
-    <SUITE FILE_PATH="coverage/actual-14-homework$flask_web__2_.coverage" NAME="flask_web (2) Coverage Results" MODIFIED="1497597782741" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/05/chenlei" />
+    <SUITE FILE_PATH="coverage/actual-14-homework$flask_web__2_.coverage" NAME="flask_web (2) Coverage Results" MODIFIED="1497598165978" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/05/chenlei" />
     <SUITE FILE_PATH="coverage/actual-14-homework$mod1.coverage" NAME="mod1 Coverage Results" MODIFIED="1497065596404" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../../python/day5" />
     <SUITE FILE_PATH="coverage/actual-14-homework$module.coverage" NAME="module Coverage Results" MODIFIED="1497065742348" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../../python/day5" />
     <SUITE FILE_PATH="coverage/actual-14-homework$flask_web.coverage" NAME="flask_web Coverage Results" MODIFIED="1497430144338" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../../python/day5" />
@@ -37,8 +36,8 @@
       <file leaf-file-name="flask_web.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/05/chenlei/flask_web.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="75" column="13" selection-start-line="75" selection-start-column="13" selection-end-line="75" selection-end-column="13" />
+            <state relative-caret-position="669">
+              <caret line="86" column="35" selection-start-line="86" selection-start-column="35" selection-end-line="86" selection-end-column="35" />
               <folding />
             </state>
           </provider>
@@ -904,8 +903,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/05/chenlei/flask_web.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="75" column="13" selection-start-line="75" selection-start-column="13" selection-end-line="75" selection-end-column="13" />
+        <state relative-caret-position="669">
+          <caret line="86" column="35" selection-start-line="86" selection-start-column="35" selection-end-line="86" selection-end-column="35" />
           <folding />
         </state>
       </provider>
