@@ -69,13 +69,13 @@ def deluser():
     elif request.method == 'POST':
         user = request.form.get('user')
         print 'delete user:%s' % user
-    with open('user_pwd.txt', 'r') as f:
-        lines = f.readlines()
-    with open('user_pwd.txt', 'w') as f_w:
-        for line in lines:
-            if user  and user in line:
-                continue
-            f_w.write(line)
+        with open('user_pwd.txt', 'r') as f:
+            lines = f.readlines()
+        with open('user_pwd.txt', 'w') as f_w:
+            for line in lines:
+                if user and user in line:
+                   continue
+                f_w.write(line)
     return redirect('/userlist')
 
 @app.route('/userlist')
