@@ -1,0 +1,17 @@
+{% if user == 'admin' %}
+<a href='/logout'>logout</a>
+<a href="/adduser">add user</a>
+{% else %}
+you need login
+<a href='/login'>login</a>
+{% endif %}
+<table border="1">
+
+    {% for user in userxxx %}
+    <tr>
+        <td>{{user[0]}}</td>
+        <td>{{user[1]}}</td>
+    </tr>
+
+{% endfor %} 
+</table>     

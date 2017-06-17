@@ -1,0 +1,3 @@
+admin:admin
+python:1234
+anzer:cl12

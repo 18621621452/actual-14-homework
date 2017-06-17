@@ -1,0 +1,12 @@
+zzzzz:ccc
+python:123
+vvv:222
+ooo:56789
+xxx:4322
+xoxo:8566
+51reboot:efwe
+xx00:123456
+user:pwd
+asda:dsad
+woniu:123456
+admin:admin
