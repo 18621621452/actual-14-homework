@@ -1,0 +1,24 @@
+{% if user %}
+    {% if user == 'admin' %}
+    <a href="/adduser">add_user</a>
+    <a href="/logout">logout</a>
+    {% else %}
+    <a href="/logout">logout</a>
+    {% endif %}
+{% endif %}
+<table border="1">
+{% for name,pwd in user_list %}
+<tr>
+<td>{{name}}</td>
+<td>{{pwd}}</td>
+{% if user == 'admin'%}
+<td>
+<a href="/deluser?user={{name}}">delete</a>
+</td>
+<td>
+<a href="/update?user={{name}}">update</a>
+</td>
+{% endif %}
+</tr>
+{% endfor %}
+</table>

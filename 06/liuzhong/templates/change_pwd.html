@@ -1,0 +1,11 @@
+helllo {{user}}
+
+<form method="post",action="/update">
+<input  type="hidden" name="user" value={{user}}>
+old password:<input type="text" name="oldpass">
+<br>
+new password:<input type="text" name="newpass">
+<br>
+confirm password:<input type="text" name="confirmpass">
+<br>
+<input type="submit" value="update">
