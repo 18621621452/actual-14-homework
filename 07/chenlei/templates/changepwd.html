@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>Signin Template for Bootstrap</title>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+    <link href="/static/signin.css" rel="stylesheet">
+<body>
+<div class="container">
+    <form class="form-signin" method="post">
+        <!--hello {{user}}-->
+        <input type="hidden" class="form-control" name="user" value="{{user}}">
+        {{user}}原密码:<input type="text" class="form-control" name="oldpwd">
+        新密码:<input type="text" class="form-control" name="newpwd">
+        确认新密码:<input type="text" class="form-control" name="verify_newpwd">
+        <button type="submit" class="btn btn-lg btn-success btn-block">确认修改
+        </button>
+    </form>
+</div>
+</body>
+</html>
+

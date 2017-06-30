@@ -1,0 +1,24 @@
+<form>
+    <select name='mem'>
+        <option></option>
+        {% for m in mem_list %}
+        <option value="{{m}}">{{m}}G</option>
+        {% endfor %}
+    </select>
+    <input type="submit" value="sort">
+</form>
+<table border="1">
+{% for p in pc %}
+<tr>
+    <td>
+        {{p[0]}}
+    </td>
+    <td>
+        {{p[1]}}
+    </td>
+    <td>
+        {{p[2]}}
+    </td>
+</tr>
+{% endfor %}
+</table>

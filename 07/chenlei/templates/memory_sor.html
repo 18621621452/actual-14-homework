@@ -1,0 +1,26 @@
+{% if memoryorder=='down' or not memoryorder %}
+<button>
+    <a href="/pc?memoryorder=up">mem_up</a>
+</button>
+{% endif %}
+
+{%if memoryorder=='up' %}
+<button>
+    <a href="/pc?memoryorder=down">mem_down</a>
+</button>
+{% endif %}
+<table border="1">
+{% for p in pc %}
+<tr>
+    <td>
+        {{p[0]}}
+    </td>
+    <td>
+        {{p[1]}}
+    </td>
+    <td>
+        {{p[2]}}
+    </td>
+</tr>
+{% endfor %}
+</table>

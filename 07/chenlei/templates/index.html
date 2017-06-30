@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-7 col-md-offset-2">
+            {% if user %}
+            <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+            welcome {{ user }}
+            {%if user == 'admin' %}
+            <a href="/logout" style="float:right" class="btn">
+                <span class="label label-default" data-toggle="tooltip" data-placement="right" title="logout">登出</span>
+            </a>
+            <form method="post" action="/adduser" class="form-inline">
+                <div class="form-group">
+                    <label>用户名</label>
+                    <input type="text" class="form-control" name="user">
+                </div>
+                <div class="form-group">
+                    <label>密码</label>
+                    <input type="text" class="form-control" name="pwd">
+                </div>
+                <button type="submit" class="btn btn-info">添加用户</button>
+            </form>
+            {% else %}
+            <a href="/logout" style="float:right" class="btn">
+                <span class="label label-default" data-toggle="tooltip" data-placement="right" title="logout">登出</span>
+            </a>
+            {% endif %}
+            <table class="table table-bordered table-hover">
+                {% for u in info %}
+                <tr class="info">
+                    <td>{{u[0]}}</td>
+                    <td>{{u[1]}}</td>
+                    <td>
+                        {% if user == 'admin' %}
+                        <a href="/deluser?user={{u[0]}}">
+                            <span class="glyphicon glyphicon-trash" aria-hidden="true" data-toggle="tooltip"
+                                  data-placement="left" title="删除用户"></span>
+                        </a>
+                        <a href="/changepwd?user={{u[0]}}">
+                            <span class="glyphicon glyphicon-edit" aria-hidden="true" data-toggle="tooltip"
+                                  data-placement="right" title="修改密码"></span>
+                        </a>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+{% else %}
+<h1>you need login</h1>
+<a href="/login">login</a>
+{% endif %}
+
+<script>
+    $(function () {
+        $("[data-toggle='tooltip']").tooltip();
+    });
+</script>
+
+</body>
+</html>
