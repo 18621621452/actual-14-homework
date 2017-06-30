@@ -12,7 +12,7 @@ def index():
 def login():
     print request.method
     if request.method == 'GET':
-        return render_template('login.html')
+        return render_template('login_bootstrap.html')
     elif request.method == 'POST':
         user = request.form.get('user')
         pwd = request.form.get('pwd')
@@ -55,7 +55,8 @@ def adduser():
         pwd = request.form.get('pwd')
     with open('user_pwd.txt', 'a') as f:
         print user,'|'*20,pwd
-        f.write(user + ':' + pwd + '\n')
+        if user:
+            f.write(user + ':' + pwd + '\n')
     return redirect('/userlist')
 
 @app.route('/deluser',methods=['GET','POST'])

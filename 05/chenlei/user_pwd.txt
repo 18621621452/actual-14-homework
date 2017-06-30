@@ -1,3 +1,5 @@
 admin:admin
 python:1234
 anzer:cl12
+java:java123
+test:1234
