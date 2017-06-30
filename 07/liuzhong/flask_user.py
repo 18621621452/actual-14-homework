@@ -4,7 +4,7 @@ from flask import Flask,request,redirect,render_template,session
 import util
 import MySQLdb as mysql
 app=Flask(__name__)
-#生产密钥
+#生成密钥
 app.secret_key="dsfdsf%$&^*1243GHkjkkkjhGFF5545657*(*@@*&&^%$$%asfddsf1242432544351HJHH55GGhhjjj$^%^43fds"
 con = mysql.connect(host="localhost",user="root",passwd="Pass@123",db="python")
 cur = con.cursor()
@@ -43,26 +43,26 @@ def login():
 @app.route("/logout")
 def logout():
     del session['user']
-    return redirect("/userlist")
+    return redirect("/login")
 #文件内容展示
-@app.route("/userlist",methods=["GET","POST"])
-def userlist():
-    user_list=[]
+#@app.route("/userlist",methods=["GET","POST"])
+#def userlist():
+#    user_list=[]
     #判断是否登录，未登录的跳转到登录页面
-    if not session.get("user"):
-        return redirect("/login")
-    with open("user.txt") as f:
-        for l in f:
-            user_list.append(l.split(":"))      
-    print session.get("user")
-    print user_list
-    return render_template("userlist.html",userxxx=user_list,user=session.get("user"))
+#    if not session.get("user"):
+#        return redirect("/login")
+#    with open("user.txt") as f:
+#        for l in f:
+#            user_list.append(l.split(":"))      
+#    print session.get("user")
+#    print user_list
+#    return render_template("userlist.html",userxxx=user_list,user=session.get("user"))
 #添加用户，用户名不允许重复
-@app.route("/adduser",methods=["GET","POST"])
+@app.route("/adduser",methods=["POST"])
 def adduser():
-    if request.method == "GET":
-        return render_template("adduser.html")
-    elif request.method == "POST":
+ #   if request.method == "GET":
+ #       return render_template("adduser.html")
+#    elif request.method == "POST":
         user=request.form.get("user")
         pwd=request.form.get("pwd")
         if user and pwd:
@@ -102,25 +102,36 @@ def change_pwd():
         sql = "update user set password='%s' where username='%s'"%(newpwd,user)
         update_pwd=cur.execute(sql)
         return redirect("/")
-#@app.route("/pc",methods=["GET","POST"])
-#def pc():
-#    mem=request.args.get("mem")
-#    print mem
-#    sql="select * from pc"
-#    cur.execute(sql)
-#    pc_list=cur.fetchall()
-#    mem_list=[]
-#    for res in pc_list:
-#        m=res[2]
-#        if m not in mem_list:
-#            mem_list.append(m)
-#    new_pc=[]
-#    for res in pc_list:
-#        print res[2],mem
-#        if not mem or res[2]==int(mem):
-#            print res
-#            new_pc.append(res)
-#    print new_pc
-#    return render_template("pc.html",pc=new_pc,res_list=mem_list)
+@app.route("/pc",methods=["GET","POST"])
+def pc():
+    mem=request.args.get("mem")
+    sort_mem=request.args.get("sort_mem")
+    sql="select * from pc"
+    memorder=request.args.get("memorder")
+    print memorder
+    if memorder == 'up':
+        sql +=' order by mem'
+    elif memorder == 'down':
+        sql +=' order by mem desc'
+    print sql
+    print sort_mem
+    if sort_mem == 'zx':
+          sql="select * from pc order by mem"
+    elif sort_mem == 'dx':
+          sql="select * from pc order by mem desc"
+    cur.execute(sql)
+    pc_list=cur.fetchall()
+    mem_list=[]
+    #获取内存列表
+    for res in pc_list:
+        m=res[2]
+        if m not in mem_list:
+            mem_list.append(m)
+    new_pc=[]
+    #获取PC列表
+    for res in pc_list:
+        if not mem or res[2]==int(mem):
+            new_pc.append(res)
+    return render_template("pc.html",pc=new_pc,res_list=mem_list)
 if __name__ == '__main__':
-    app.run(host="0.0.0.0",port=8081,debug=True)
+    app.run(host="0.0.0.0",port=80,debug=True)

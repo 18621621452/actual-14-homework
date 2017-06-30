@@ -14,6 +14,6 @@ for i in range(length-1):
     for j in range(length-1-i):
         if  my_list[j][1] > my_list[j+1][1]:
             my_list[j],my_list[j+1] = my_list[j+1],my_list[j]
-for key,val in my_list[:-11:-1]:
+for key,val in my_list:
     print '%s count is %s'%(key,val)
     
