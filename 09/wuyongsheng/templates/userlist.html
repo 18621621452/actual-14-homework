@@ -1,0 +1,18 @@
+<table> 
+  {% for u in users %}
+  <tr>
+   <td>{{ u[0] }}</td>
+   <td>{{ u[1] }}</td>
+   {% if user == 'admin' %}
+   <td>
+   <!--data-* 绑定具体数据值 传递给后端 。class 中设置deluser-data原因:删除按钮有多个,而不能使用id='xxx' 只能对一个数据操作 -->
+   <span data-user={{ u[0] }} class="deluser-data glyphicon glyphicon-trash" aria-hidden="true"></span> <!-- 删除用户-->
+   |
+   <!--用模态框更改用户密码 关键字(data-toggle="modal" data-target="#myModal")
+       而不是使用<a href="/update?user={{ u[0] }}">xx</a> 页面跳转 表单处理-->
+   <span data-user={{ u[0] }} data-toggle="modal" data-target="#myModal-modify" class="modify-pwd glyphicon glyphicon-edit" aria-hidden="true"></span>   
+   </td>
+  {% endif %}
+   </tr>
+  {% endfor %}   
+</table>

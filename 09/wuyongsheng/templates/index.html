@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <title>管理页面</title>
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="static/css/bootstrap.min.css">
+</head>
+<body>
+<div class='container'>
+<!-- <input type='text'> 检查当前页面是 整体刷新 还是 ajax 更新页面 -->
+  <div class="row">
+    <div class="col-md-7 col-md-offset-2">
+    {% if user %}
+    <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+    welcome {{ user }}
+    {%if user == 'admin' %}
+    <a href="/logout" style="float:right" class="btn">
+      <span class="label label-default" data-toggle="tooltip" data-placement="right" title="logout">登出</span>
+    </a>
+    <div class='row'>
+      <div class='col-md-3 col-md-offset-3'>
+    <button type="button" class="btn-xs  btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+    添加用户
+    </button>
+    </div>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel">添加用户</h4>
+          </div>
+          <div class="modal-body">
+            <form id="form-user" method="post" class="form-inline">
+              <div class="form-group">
+              <label>用户名</label>
+              <input type="text" class="form-control" id="input-user" name="user">
+              </div>
+              <div class="form-group">
+              <label>密码</label>
+              <input type="text" class="form-control" id="input-pwd" name="pwd">
+              </div>
+              </form>
+          </div>
+          <div class="modal-footer">
+           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+           <button type="button" class="btn btn-success" id="btn-adduser">Add</button>
+          </div>
+          </div>
+        </div>
+    </div>
+</div>
+	{% else %}
+    <a href="/logout" style="float:right" class="btn">
+      <span class="label label-default" data-toggle="tooltip" data-placement="right" title="logout">登出</span>
+    </a>
+    {% endif %}
+</div>
+</div>
+</div>
+{% else %}
+<h1>you need login</h1>
+<a href="/login">login</a>
+{% endif %}
+<div class='row'>
+    <div class='col-md-4 col-md-offset-4'>
+      <table id="user-table" class="table table-bordered  table-hover">
+      <!-- ajax 获取全部数据 在此显示-->
+      </table>
+    </div>
+</div>
+<!-- Modal -->
+   <div class="modal fade" id="myModal-modify" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+   <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">修改密码</h4>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+        <div class="row">
+        <div class="col-md-2 col-md-offset-2">
+        <form id="form-modify" class="form-horizontal">
+              <span id="msg-show"></span>
+              <div class="form-group">
+              <label> 旧密码 </label>
+              <input type="text" class="form-control" id="input-oldpwd" name="oldpwd" required autofocus>
+              </div>
+              <div class="form-group">
+              <label>新密码</label>
+              <input type="text" class="form-control" id="input-newpwd" name="newpwd" required>
+              </div>
+              <div class="form-group">
+              <label>确认密码</label>
+              <input type="text" class="form-control" id="input-confirmpwd" name="confirmpwd" required>
+              </div>
+      </form>
+      </div>
+      </div>
+      </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button id="modifyuser-pwd" type="button" class="btn btn-success">修改</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+<script src="static/jquery.min.js"> </script>
+<script src="static/js/bootstrap.min.js" > </script>
+<script>
+    $(function () {
+        $("[data-toggle='tooltip']").tooltip();
+    });
+</script>
+<script>
+//通过ajax获取数据
+function getUser(){
+    $.get('/userlist',function(data){
+        $('#user-table').html(data)
+    })
+}
+//获取首屏数据
+getUser()
+//通过模态框添加用户
+$("#btn-adduser").on('click',function(){
+    //拼接url='/adduser?user=xx&pwd=pwd'
+    var user = $("#input-user").val()
+    var pwd  = $("#input-pwd").val()
+    var url = '/adduser?user=' + user + '&pwd=' + pwd
+    //前端向后端 以get方式 提交数据
+    $.get(url,function(data){
+        if(data == 'ok'){
+            //alert('add success')
+            //隐藏弹窗
+            $('#myModal').modal('hide')
+            //form 重置 每次打开弹窗后 文本框中保留前一次添加的文本
+            //成功添加用户后 自动清空文本框
+            $("#form-user")[0].reset()
+            //刷新页面
+            getUser()
+        }
+    }) 
+})
+//删除用户
+$(document).on('click','.deluser-data',function(){
+    //console.log($(this).data('user')) 等价于 console.log($(this).attr('data-user'))
+    //临时存储user值&拼接url,get()方式向后端提交数据操作
+    var user = $(this).data('user')
+    var url = '/deluser?user=' + user
+    $.get(url,function(data){
+        if(data == 'ok'){
+            alert('deluser success')
+            //ajax刷新当前页面数据
+            getUser()
+        }
+    })
+})
+//更新用户密码
+$(document).on('click','.modify-pwd',function(){
+    console.log($(this).data('user'))
+    var user = $(this).data('user')
+    $("#modifyuser-pwd").on('click',function(){
+        var oldpwd = $("#input-oldpwd").val()
+        var newpwd = $("#input-newpwd").val()
+        var confirmpwd = $("#input-confirmpwd").val()
+        var url = '/update?user=' + user + "&oldpwd=" + oldpwd + "&newpwd=" + newpwd + "&confirmpwd=" + confirmpwd
+        $.get(url,function(data){
+            if(data == 'ok'){
+                //显示更新成功
+                alert('update success')
+                //隐藏模态框
+                $('#myModal-modify').modal('hide')
+                //表单填写的内容清空
+                $("#form-modify")[0].reset()
+                //aja刷新页面数据
+                getUser()
+            }
+        })
+    })
+})
+</script>
+</body>
+</html>
