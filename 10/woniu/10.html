@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="sweetalert.css">
+</head>
+<body>
+
+    <button class='update-btn'>修改密码</button>
+
+
+
+    <button id='confirm-btn'>弹窗里的确认修改</button>
+<!--     <p>
+        输入长度校验3-10
+        
+    </p>
+
+    username:<input maxlength="5" id='test-input' type='text' name='username'> -->
+
+    <script src='./jquery.js'></script>
+
+    <script src='sweetalert.min.js'></script>
+    <script>
+        // $(document).on('click','.update-btn',function(){
+            $('#confirm-btn').on('click',function(){
+                swal({ 
+                  title: "确定删除吗？", 
+                  text: "你将无法恢复该虚拟文件！", 
+                  type: "warning",
+                  showCancelButton: true, 
+                  confirmButtonColor: "#DD6B55",
+                  confirmButtonText: "确定删除！", 
+                  closeOnConfirm: false
+                },
+                function(){
+                  swal("删除！", "删除成功", "success"); 
+                });
+            })
+        // })
+    </script>
+
+
+<!--     <script>
+        var input = $('#test-input')
+        input.on('change',function(){
+            var val = $(this).val()
+            if(val.length>10){
+                alert('太长了')
+            }else if(val.length<3){
+                alert('太短了')
+            }
+            $.get('xx?user='+val,)
+        })
+    </script> -->
+</body>
+</html>

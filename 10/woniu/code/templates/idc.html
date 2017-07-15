@@ -1,0 +1,118 @@
+{% extends 'layout2.html' %}
+
+
+
+{% block body %}
+
+<button id='add-idc' data-toggle="modal" data-target="#add-idc-modal"  class='add-btn-admin btn btn-primary'>新增机房</button>
+
+
+<table id="my-table" class='table table-bordered' >
+  <thead>
+    <tr>
+        <th>id</th>
+      <th>机房</th>
+      <th>收集</th>
+      <th>操作</th>
+  </thead>
+
+  <tbody id='idc-list'></tbody>
+</table>
+
+
+
+
+
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="add-idc-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">新建机房</h4>
+      </div>
+      <div class="modal-body">
+
+<form class="form-horizontal" id='add-form'>
+  <input type='hidden' name="table_name" value='idc'>
+  <div class="form-group">
+    <label class="col-sm-4 control-label">机房名</label>
+    <div class="col-sm-8">
+      <input type="text" name='name' class="form-control"  >
+    </div>
+  </div>
+  <div class="form-group">
+    <label  class="col-sm-4 control-label">电话</label>
+    <div class="col-sm-8">
+      <input type="text" name="mobile" class="form-control" >
+    </div>
+  </div>
+</form>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+        <button type="button" id='add-confirm' class="btn btn-primary">新增</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+
+
+
+
+{% block js %}
+<script>
+
+function getList(){
+
+    $.getJSON('/listapi?table_name=idc',function(res){
+        
+        var html_str = ''
+
+        $.each(res,function(i,v){
+
+            html_str += '<tr>'
+            html_str += '<td>'+v[0]+'</td>'
+            html_str += '<td>'+v[1]+'</td>'
+            html_str += '<td>'+v[2]+'</td>'
+            html_str += '<td>delete</td>'
+            html_str += '</tr>'
+        })
+        console.log([$('#idc-list').html()])
+        if($('#idc-list').html()){
+            $('#my-table').DataTable().destroy()
+        }
+        $('#idc-list').html(html_str)
+        $('#my-table').DataTable({
+        
+            bLengthChange:false
+        });
+    })
+}
+getList()
+
+$('#add-confirm').click(function(){
+    var o = $('#add-form').serialize()
+    $.post('/addapi',o,function(res){
+        res = JSON.parse(res)
+        if(res.code==0){
+            getList()
+            $('#add-idc-modal').modal('hide')
+            $('#add-confirm')[0].reset()
+            swal('添加成功','','success')
+        }else{
+            swal(res.msg,'','error')
+        }
+    })
+
+})
+</script>
+{% endblock %}
